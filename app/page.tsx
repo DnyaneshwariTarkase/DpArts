@@ -15,7 +15,7 @@ import * as THREE from 'three';
 const useMousePosition = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   useEffect(() => {
-    const updateMouse = (e) => {
+    const updateMouse = (e: any) => {
       setMouse({ 
         x: (e.clientX / window.innerWidth) * 2 - 1, 
         y: -(e.clientY / window.innerHeight) * 2 + 1 
@@ -33,7 +33,7 @@ const useMousePosition = () => {
  */
 
 const BackgroundCanvas = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -79,10 +79,10 @@ const BackgroundCanvas = () => {
     let mouseX = 0;
     let mouseY = 0;
     const clock = new THREE.Clock();
-    let animationId;
+    let animationId: number;
 
     // 4. Event Handlers
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: any) => {
       mouseX = (event.clientX / window.innerWidth) * 2 - 1;
       mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
     };
@@ -147,7 +147,7 @@ const CustomCursor = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    const onMouseMove = (e) => setPosition({ x: e.clientX, y: e.clientY });
+    const onMouseMove = (e: any) => setPosition({ x: e.clientX, y: e.clientY });
     const onMouseDown = () => setIsHovered(true);
     const onMouseUp = () => setIsHovered(false);
     
@@ -192,7 +192,12 @@ const CustomCursor = () => {
   );
 };
 
-const SectionHeader = ({ title, subtitle }) => {
+interface SectionHeaderProps {
+  title: string;
+  subtitle: string;
+}
+
+const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle }) => {
   return (
     <div className="mb-16 relative">
       <motion.h2 
@@ -217,7 +222,14 @@ const SectionHeader = ({ title, subtitle }) => {
   );
 };
 
-const ProjectCard = ({ title, category, img, index }) => {
+interface ProjectCardProps {
+  title: string;
+  category: string;
+  img: string;
+  index: number;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, img, index }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -515,7 +527,7 @@ const Contact = () => {
             <div className="group">
               <label className="block text-xs font-mono text-cyan-400 mb-2 uppercase tracking-widest">Transmission</label>
               <textarea 
-                rows="4"
+                rows={4}
                 placeholder="ENTER MESSAGE DATA..."
                 className="w-full bg-white/5 border border-white/10 px-4 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 focus:bg-cyan-900/10 transition-all font-mono text-sm"
               ></textarea>

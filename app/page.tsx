@@ -329,9 +329,9 @@ const Hero = () => {
         </motion.div>
 
         <h1 className="text-7xl md:text-9xl font-bold text-white mb-6 tracking-tighter leading-[0.9]">
-          DIGITAL <br />
+          DP <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-gray-500 relative">
-            ARTISAN
+            ARTS
             <motion.span 
               className="absolute top-0 left-0 w-full text-pink-500 opacity-30 blur-sm"
               animate={{ x: [-2, 2, -2] }}

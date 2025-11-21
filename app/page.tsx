@@ -289,7 +289,7 @@ const Navbar = () => {
     >
       <div className="flex flex-col">
         <span className="font-bold text-xl tracking-tight">DNYANESHWARI</span>
-        <span className="text-[10px] font-mono text-cyan-400 tracking-[0.3em]">TARKASE_DESIGN</span>
+        <span className="text-[10px] font-mono text-cyan-400 tracking-[0.3em]">TARKASE</span>
       </div>
       
       <div className="hidden md:flex gap-8 items-center font-mono text-xs tracking-widest">

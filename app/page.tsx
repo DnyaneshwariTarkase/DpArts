@@ -394,7 +394,7 @@ const About = () => {
              {/* Simulated Holographic Profile */}
             <div className="w-full h-full bg-gray-900 relative overflow-hidden group">
               <img 
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" 
+                src="/Dnyaneshwari.png"
                 alt="Dnyaneshwari Tarkase" 
                 className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700"
               />

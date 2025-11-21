@@ -354,7 +354,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 border border-cyan-400 text-cyan-400 font-mono text-sm tracking-widest uppercase bg-transparent hover:shadow-[0_0_20px_rgba(0,243,255,0.3)] transition-all"
           >
-            View Projects
+            {/* View Projects */}
           </motion.button>
         </div>
       </motion.div>

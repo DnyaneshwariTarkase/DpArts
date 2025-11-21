@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ChangeEvent, FormEvent } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Menu, Instagram, Linkedin, Mail, ArrowRight, 
@@ -496,6 +496,33 @@ const Gallery = () => {
 };
 
 const Contact = () => {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    console.log("Input changed:", e.target.name, e.target.value);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      console.log("Sending form data:", formData);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        alert("Transmission sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        alert("Error sending transmission");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error sending transmission");
+    }
+  };
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-cyan-900/5 skew-y-3 transform origin-bottom-right"></div>
@@ -504,22 +531,28 @@ const Contact = () => {
         <SectionHeader title="Initiate Protocol" subtitle="Contact Me" />
         
         <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-          <form className="grid grid-cols-1 gap-6">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="group">
                 <label className="block text-xs font-mono text-cyan-400 mb-2 uppercase tracking-widest">Identity</label>
                 <input 
                   type="text" 
+                  name="name"
                   placeholder="ENTER NAME"
                   className="w-full bg-white/5 border border-white/10 px-4 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 focus:bg-cyan-900/10 transition-all font-mono text-sm"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
               </div>
               <div className="group">
                 <label className="block text-xs font-mono text-cyan-400 mb-2 uppercase tracking-widest">Frequency</label>
                 <input 
                   type="email" 
+                  name="email"
                   placeholder="ENTER EMAIL"
                   className="w-full bg-white/5 border border-white/10 px-4 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 focus:bg-cyan-900/10 transition-all font-mono text-sm"
+                   value={formData.email}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -528,8 +561,11 @@ const Contact = () => {
               <label className="block text-xs font-mono text-cyan-400 mb-2 uppercase tracking-widest">Transmission</label>
               <textarea 
                 rows={4}
+                name="message"
                 placeholder="ENTER MESSAGE DATA..."
                 className="w-full bg-white/5 border border-white/10 px-4 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 focus:bg-cyan-900/10 transition-all font-mono text-sm"
+                value={formData.message}
+                onChange={handleChange}
               ></textarea>
             </div>
 

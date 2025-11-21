@@ -337,7 +337,7 @@ const Hero = () => {
               animate={{ x: [-2, 2, -2] }}
               transition={{ duration: 0.2, repeat: Infinity }}
             >
-              ARTISAN
+              ARTS
             </motion.span>
           </span>
         </h1>

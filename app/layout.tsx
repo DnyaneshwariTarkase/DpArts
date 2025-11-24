@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script"; // ⭐ Add this
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,10 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ⭐ Add Tap-Turtle Script Here */}
         <Script
           src="https://cdn.tap-turtle.app/tap-turtle.js"
-          data-project-id="bc662a09-bdb8-48c0-9a35-4ca21de02938"   // ←  real Project ID
+          data-project-id="bc662a09-bdb8-48c0-9a35-4ca21de02938"
           strategy="afterInteractive"
         />
       </head>

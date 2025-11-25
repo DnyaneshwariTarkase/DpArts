@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Tap Turtle Recorder */}
         <Script
-          src="/tap-turtle.js" // ✅ Local fallback: place tap-turtle.js in /public
+          src="https://cdn.tapturtle.com/tap-turtle.js" // ✅ Local fallback: place tap-turtle.js in /public
           strategy="afterInteractive"
           data-project-id="bc662a09-bdb8-48c0-9a35-4ca21de02938"
         />
